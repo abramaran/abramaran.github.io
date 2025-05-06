@@ -9,7 +9,7 @@ Beyond programming, I have hands-on experience leading and managing projects, fr
 ## Index
 
 - [Telefónica Haptic Arena](#Telefónica-Haptic-Arena-(Mobile-World-Congress-2024))
-- [Extendra Hub](#Extendra-Hub)
+- [Extendra Hub](#Extendra-Hub-(2023))
 - [Pull and Bear Pacific Metaverse](#Pull-and-Bear-Pacific-Metaverse-(2022))
 - [Go!Go!! Robot Brawl](#Go!Go!!-Robot-Brawl-(2020))
 - [Playdate game development in C](#Playdate-game-development-in-C-(2021))
@@ -38,21 +38,21 @@ Unreal Engine, C++/blueprints, AWS
 
 ### Media
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/v3ZvDrCBnig?si=-dJna6g2Wo5ApS3O&amp;start=20905" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="560" src="https://www.youtube-nocookie.com/embed/v3ZvDrCBnig?si=-dJna6g2Wo5ApS3O&amp;start=20905" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 *Live demo in MWC stand*
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/aB0pu_GJM_Q?si=pk770WaPriNCfxKU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="560" src="https://www.youtube-nocookie.com/embed/aB0pu_GJM_Q?si=pk770WaPriNCfxKU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 *POV gameplay*
 
 ### External link
 
-[Project website](https://web.archive.org/web/20241218154206/https://extendra.io/es/proyectos/telefonica-edge-haptic-arena)
+[Case study (archived)](https://web.archive.org/web/20241218154206/https://extendra.io/es/proyectos/telefonica-edge-haptic-arena)
 
 
 
-## Extendra Hub
+## Extendra Hub (2023)
 
 ### Description
 
@@ -108,6 +108,10 @@ Unreal Engine, C++/blueprints, AWS
 
 *Multiplayer VR surf minigame (seen from the spectator camera)*
 
+<video src="https://video.wixstatic.com/video/ec5147_d7cac6a2903f40cfaef5b87d5efcc205/1080p/mp4/file.mp4" preload="auto" controls="controls" height="560"></video>
+
+*Short video of the game in the fashion event Scrapworld*
+
 
 
 <video src="https://media.extendra.io/production/assets/media/Video%20of%20the%20project%20of%20%20Pull&amp;Bear.m4v" preload="auto" controls="controls"></video>
@@ -116,9 +120,9 @@ Unreal Engine, C++/blueprints, AWS
 
 ### External link
 
-[Quest store page](https://www.meta.com/experiences/pullbear/5023202301102285/)
+[Meta Quest store page](https://www.meta.com/experiences/pullbear/5023202301102285/)
 
-[Project website](https://web.archive.org/web/20250204104622/https://extendra.io/en/projects/pull-and-bear)
+[Case study (archived)](https://web.archive.org/web/20250204104622/https://extendra.io/en/projects/pull-and-bear)
 
 
 
@@ -178,7 +182,9 @@ C, Lua, C++ and Pulp
 
 ### Media
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QDzZpxjUysk?si=Bdh7NlRX1eu2fIr2&amp;start=257" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="560" src="https://www.youtube-nocookie.com/embed/QDzZpxjUysk?si=Bdh7NlRX1eu2fIr2&amp;start=257" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+*Overview and gameplay*
 
 ### External link
 
@@ -207,11 +213,11 @@ Unreal Engine, C++/blueprints, AWS
 
 <video src="https://media.extendra.io/production/assets/media/Showroom-TOUS-1.mp4" preload="auto" controls="controls"></video>
 
-
+*Trailer*
 
 ### External link
 
-[https://extendra.io/en/projects/tous-manifesto](https://extendra.io/es/proyectos/tous-manifesto)
+[Case study (archived)](https://web.archive.org/web/20250204105024/extendra.io/en/projects/tous-manifesto)
 
 
 
@@ -219,4 +225,4 @@ Unreal Engine, C++/blueprints, AWS
 
 [Itch.io profile](https://abramaran.itch.io)
 
-[Personal website](http://www.abramaran.com/)
+[Older personal projects](http://www.abramaran.com/)
