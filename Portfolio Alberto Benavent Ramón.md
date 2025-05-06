@@ -72,7 +72,7 @@ Unreal Engine, C++ / Blueprints, AWS
 
 ### Media
 
-<video src="C:\Users\Alberto\Videos\ExtendraHub.mp4"></video>
+<video src="https://scontent.oculuscdn.com/v/t64.7195-25/38974445_1176979574127775_7719488661382865418_n.mp4?_nc_cat=101&ccb=1-7&_nc_sid=b20b63&_nc_ohc=i9sV4Mk4kqIQ7kNvwHJVD9R&_nc_oc=AdmwO6VNqobFeZ2RJTXpAuofgsyU01ZrLWTmfGoK4yUEb15M5iaFbD5HbR_39BarrUk&_nc_zt=28&_nc_ht=scontent.oculuscdn.com&_nc_gid=5aWFCkcaY1xrAnBSaQCNyw&oh=00_AfK6d6gJjsq9MBxI6_nBKTTnukxyd29Jdq5LA52VvzeQBQ&oe=681FBA16"></video>
 
 *Trailer*
 
