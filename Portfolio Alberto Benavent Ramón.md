@@ -1,32 +1,34 @@
 # Portfolio Alberto Benavent Ramón
 
-### About me
+## About me
 
-Hi! I'm Alberto, a **Senior Unreal Engine developer** with **over 4 years of experience** crafting games and immersive applications. I love the technical side of development, but I also approach game programming with a design mindset, always considering how each mechanic or feature can enhance the experience we want to create. My passion lies in combining technical expertise with creativity to build engaging and responsive gameplay that resonates with players.
+Hi! I'm Alberto, a **Senior Programmer** with **over 4 years of experience** crafting games and immersive applications. I love the technical side of development, but I also approach game programming with a design mindset, always considering how each mechanic or feature can enhance the experience we want to create. My passion lies in combining technical expertise with creativity to build engaging and responsive gameplay that resonates with players.
 
 Beyond programming, I have hands-on experience leading and managing projects, from client-driven applications to internal tools, always striving for efficiency, quality, and innovation in every project.
 
-### Index
+## Index
 
-- [Telefónica Haptic Arena](https://abramaran.github.io#Telefónica-Haptic-Arena-(Mobile-World-Congress-2024))
-- [Pull and Bear Pacific Metaverse](https://abramaran.github.io#Pull-and-Bear-Pacific-Metaverse-(2022))
-- [Go!Go!! Robot Brawl](https://abramaran.github.io#Go!Go!!-Robot-Brawl-(2020))
-- [TOUS MANIFESTO](https://abramaran.github.io#TOUS-MANIFESTO-(2023))
-- Other work
+- [Telefónica Haptic Arena](#Telefónica-Haptic-Arena-(Mobile-World-Congress-2024))
+- [Extendra Hub](#Extendra-Hub)
+- [Pull and Bear Pacific Metaverse](#Pull-and-Bear-Pacific-Metaverse-(2022))
+- [Go!Go!! Robot Brawl](#Go!Go!!-Robot-Brawl-(2020))
+- [Playdate game development in C](#Playdate-game-development-in-C-(2021))
+- [TOUS MANIFESTO](#TOUS-MANIFESTO-(2023))
+- [Other work](#Other-work)
 
 
 
-### Telefónica Haptic Arena (Mobile World Congress 2024)
+## Telefónica Haptic Arena (Mobile World Congress 2024)
 
-#### Description
+### Description
 
 1-vs-1 Multiplayer VR dodgeball game, with haptic vest effects, Cloud Rendering and asymmetric gameplay. Showcased at Mobile World Congress 2024 as Telefónica's main demo.
 
-#### Engine/language
+### Engine/language
 
 Unreal Engine, C++/blueprints, AWS
 
-#### Highlights
+### Highlights
 
 - **Game design** and **director**, **programmer** and project manager.
 - Implemented **VR object throw** with physics, trajectory smoothing, player targeting and **network optimization**.
@@ -34,33 +36,65 @@ Unreal Engine, C++/blueprints, AWS
 - **Cloud rendering** R+D using NVIDIA CloudXR, supervised and contributed to the implementation.
 - **Asymetric multiplayer**: Audience members could throw balls at the two players using motion controllers and the stand's main screen.
 
-#### Media
-
-**Live demo in MWC stand**: 
+### Media
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/v3ZvDrCBnig?si=-dJna6g2Wo5ApS3O&amp;start=20905" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-**POV gameplay:**
+*Live demo in MWC stand*
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/aB0pu_GJM_Q?si=pk770WaPriNCfxKU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-#### External link
+*POV gameplay*
+
+### External link
 
 [Project website](https://web.archive.org/web/20241218154206/https://extendra.io/es/proyectos/telefonica-edge-haptic-arena)
 
 
 
-### Pull and Bear Pacific Metaverse (2022)
+## Extendra Hub
 
-#### Description
+### Description
 
-Multiplayer VR showroom and surf game. Showcased in fashion expos and downloadable from the Meta Quest Store.
+A fully-featured multiplayer B2B content platform for VR meetings, training, conferences, collaborative workspaces, showrooms, and more.
 
-#### Engine/language
+### Engine/language
+
+Unreal Engine, C++ / Blueprints, AWS
+
+### Highlights
+
+- **Three-year development**, **multi-platform** release on the **Meta Quest Store**, PC, and Pixel Streaming.
+- **Complex VR networked interactions** and a robust content delivery system.
+- Developed in-house tools and plugins, including **voice chat**, **WebAPI integration**, **media manager**, **video calls**, and **custom Slate UI components**.
+- Designed and implemented **training-specific gameplay mechanics**.
+- Created the Pixel Streaming **user presence and interaction system** for an optimized experience across **mobile and desktop web** platforms.
+
+### Media
+
+<video src="C:\Users\Alberto\Videos\ExtendraHub.mp4"></video>
+
+*Trailer*
+
+### External links
+
+[Meta Quest store page](https://www.meta.com/es-es/experiences/extendra-hub/8573735049368457/)
+
+[Official website (archived)](https://abramaran.github.io/ExtendraHubArchived/)
+
+
+
+## Pull and Bear Pacific Metaverse (2022)
+
+### Description
+
+Multiplayer VR showroom and surf game. Showcased in fashion expos and **released on the Meta Quest Store**.
+
+### Engine/language
 
 Unreal Engine, C++/blueprints, AWS
 
-#### Highlights
+### Highlights
 
 - **Game design, gameplay programmer.**
 - **Implemented a VR networked surf minigame** played using full body movement.
@@ -68,7 +102,7 @@ Unreal Engine, C++/blueprints, AWS
 - **UI work**, **voice chat** plugin development.
 - Used **AI actors** as a debugging tool.
 
-#### Media
+### Media
 
 ![img](https://media.extendra.io/production/assets/media/Juegos.gif)
 
@@ -80,7 +114,7 @@ Unreal Engine, C++/blueprints, AWS
 
 *Showroom & overview*
 
-#### External link
+### External link
 
 [Quest store page](https://www.meta.com/experiences/pullbear/5023202301102285/)
 
@@ -88,25 +122,25 @@ Unreal Engine, C++/blueprints, AWS
 
 
 
-### Go!Go!! Robot Brawl (2020)
+## Go!Go!! Robot Brawl (2020)
 
-#### Description
+### Description
 
-Multiplayer fighting game written on a **fully custom C++ game engine**.
+Online multiplayer fighting game written on a **fully custom C++ game engine**.
 
-#### Engine/language
+### Engine/language
 
 C++, OpenGL
 
-#### Highlights
+### Highlights
 
 - **Engine and gameplay programmer, game design.**
 - Built all the **Entity Component System** game engine logic **from scratch in C++.**
 - Coded the **logic aspect** of the **rendering engine**: Scenes represented as node trees, asset and animations loading.
 - **Highly optimized**: built for a very low-specs unix machine.
-- Worked on many aspects of the camera and gameplay mechanics.
+- Worked on many aspects of animation, camera and gameplay mechanics.
 
-#### Media
+### Media
 
 ![img](https://img.itch.zone/aW1hZ2UvNjU4MDE1LzM1Mzk0MDgucG5n/original/LosY2N.png)
 
@@ -118,41 +152,70 @@ C++, OpenGL
 
 *AI match*
 
-#### External link
+### External link
 
 [Itch.io game page](https://tako-ko.itch.io/gogo-robot-brawl)
 
 
 
-### TOUS MANIFESTO (2023)
+## Playdate game development in C (2021)
 
-#### Description
+### Description
+
+Bachelor’s thesis written in English during the Playdate Developers Preview. The project included the development of a custom C game engine and a platforming game, a detailed devlog, a beginner-friendly C programming guide for Playdate, and an R&D phase exploring development in C, C++, Lua, and Pulp.
+
+### Engine/language
+
+C, Lua, C++ and Pulp
+
+### Highlights
+
+- Explored **innovative use of hardware** features, such as stowing the crank behind the device to act as a switch.
+- Built a **custom Entity Component System engine in C** tailored for Playdate’s constraints.
+- Developed additional **game prototypes and game jam entries in Lua**, expanding familiarity with Playdate's scripting tools.
+- Reported SDK bugs during the developer preview, contributing to Playdate’s ecosystem.
+- **Featured on the official Playdate website** under [Useful links for Playdate development](https://help.play.date/developer/dev-links/)
+
+### Media
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QDzZpxjUysk?si=Bdh7NlRX1eu2fIr2&amp;start=257" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### External link
+
+[Bachelor's Thesis (PDF)](https://rua.ua.es/dspace/bitstream/10045/117000/1/Playdate_game_development_in_C_Benavent_Ramon_Alberto.pdf)
+
+
+
+## TOUS MANIFESTO (2023)
+
+### Description
 
 Multiplayer VR showroom and styling minigame. Showcased in fashion expos, accessible from the TOUS website, published on the Meta Quest Store.
 
-#### Engine/language
+### Engine/language
 
 Unreal Engine, C++/blueprints, AWS
 
-#### Highlights
+### Highlights
 
 - **Programmer, project manager, experience design.**
 - Designed and implemented a **storefront designing minigame.**
 - Built on custom plugins and tech on which I previously worked on and acted as PM during my years in Extendra.
+- Delivered in our platform Extendra Hub.
 
-#### Media
+### Media
 
 <video src="https://media.extendra.io/production/assets/media/Showroom-TOUS-1.mp4" preload="auto" controls="controls"></video>
 
 
 
-#### External link
+### External link
 
 [https://extendra.io/en/projects/tous-manifesto](https://extendra.io/es/proyectos/tous-manifesto)
 
 
 
-### Other work
+## Other work
 
 [Itch.io profile](https://abramaran.itch.io)
 
