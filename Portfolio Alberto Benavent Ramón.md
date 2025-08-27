@@ -104,7 +104,7 @@ Unreal Engine, C++/blueprints, AWS
 
 ### Media
 
-![img](https://media.extendra.io/production/assets/media/Juegos.gif)
+![img](https://web.archive.org/web/20250204104622im_/https://media.extendra.io/production/assets/media/Juegos.gif)
 
 *Multiplayer VR surf minigame (seen from the spectator camera)*
 
@@ -114,7 +114,7 @@ Unreal Engine, C++/blueprints, AWS
 
 
 
-<video src="https://media.extendra.io/production/assets/media/Video%20of%20the%20project%20of%20%20Pull&amp;Bear.m4v" preload="auto" controls="controls"></video>
+<iframe src="https://drive.google.com/file/d/13sfwhqF7NQXaKMAfaBse1zNYfAU-HzU3/preview" width="640" height="480" allow="autoplay"></iframe>
 
 *Showroom & overview*
 
@@ -211,7 +211,7 @@ Unreal Engine, C++/blueprints, AWS
 
 ### Media
 
-<video src="https://media.extendra.io/production/assets/media/Showroom-TOUS-1.mp4" preload="auto" controls="controls"></video>
+<iframe src="https://drive.google.com/file/d/1PSnp844RCqE-bb-31kWRSOjPQzpV3ioc/preview" width="640" height="480" allow="autoplay"></iframe>
 
 *Trailer*
 
