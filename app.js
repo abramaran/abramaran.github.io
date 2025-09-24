@@ -258,12 +258,6 @@ function setupEventListeners() {
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
   
-  if (hamburger && navMenu) {
-    hamburger.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
-    });
-  }
-
   // Scroll event for navbar
   window.addEventListener('scroll', throttle(function() {
     updateActiveNavLink();
