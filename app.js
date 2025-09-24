@@ -595,23 +595,18 @@ function updateCarousel() {
 // Setup smooth scrolling for navigation links
 function setupSmoothScrolling() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      // Don't prevent default for tag filters
-      if (this.classList.contains('tag-filter')) {
-        return;
+    anchor.addEventListener('click', function (e) {
+      if (this.classList.contains('tag-filter')) return;
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "javascript:void(0)") {
+        return; // Do not perform scroll for # or javascript:void(0)
       }
-      
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      
+      const target = document.querySelector(href);
       if (target) {
         const navbarHeight = document.querySelector('.navbar').offsetHeight;
         const targetPosition = target.offsetTop - navbarHeight;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
       }
     });
   });
