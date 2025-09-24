@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -19,6 +20,8 @@
                 <a href="#projects" class="nav-link" data-en="Projects" data-es="Proyectos">Projects</a>
                 <a href="#about" class="nav-link" data-en="About" data-es="Acerca de">About</a>
                 <a href="#contact" class="nav-link" data-en="Contact" data-es="Contacto">Contact</a>
+                <a href="#" class="nav-link" id="secure-link" data-en="Password" data-es="Contraseña">Password</a>
+
                 <button class="language-toggle" onclick="toggleLanguage()">
                     <span class="lang-option active" data-lang="en">EN</span>
                     <span class="lang-divider">|</span>
@@ -318,6 +321,19 @@
         <a href="mailto:alberto.benavent@gmail.com" class="email-fab" title="Email Alberto">
             <span>✉</span>
         </a>
+    </div>
+
+    <!-- Code links modal -->
+    <div id="secure-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeSecureModal()"></div>
+        <div class="modal-content" style="padding: 2rem;">
+            <button class="modal-close" onclick="closeSecureModal()">×</button>
+            <h3 id="secure-modal-title">Enter password to view</h3>
+            <input type="password" id="secure-password" placeholder="Password" />
+            <button onclick="decryptSecureContent()">Unlock</button>
+            <div id="secure-content" style="display:none; margin-top:1em;"></div>
+            <div id="secure-error" style="color:#c00; margin-top:0.5em; display:none;"></div>
+        </div>
     </div>
 
     <script src="app.js"></script>

@@ -769,6 +769,41 @@ function setupScrollAnimations() {
   });
 }
 
+// Password protected modal
+const encryptedString = "U2FsdGVkX1/7quBfjPaJXPFORKCIIOnHkfTfzApCPvxiu/0JrlDqdLXnDnsOrfNWxyDIU9dmHNqz4puenTw2TbCqR2bm/NQ4uPwS/x4RnORR1ERHQvdOZNG7jhGg4efXeKx0UoH0CuEUubgaMvzAsMRlvCQ8FPLdtXC1+t+7OTrB0cJvR7JqEDpm33Is+ZefV+HDdard/tvBY4sK8qQmrMUSc21rH1v789R1i2X4SCkpD0dU7N5AXIwvf/xWl0xSQcrBSYqGibymsv/tVWQ4YEBbV1sJ7pim1tDvbBjZPP3Wlv/EenyvKb9PW2b/adb1o5KlokuF0gxsbWY2O7q65P6RTX9ETR6J5bIhRYpBrBJUwwIq4lb5gPcz0hTxaOksHNtTRwbL8BZP0PFtiWv73s7yHt83r5VMfMNcjmGezZsXKis4GREGmnxOqq18e4f6+BHO/prXCev9UnosWBKxh49fbW32aKajow279LNpJAHmK/R5EcqwMfQ7Zkcc1FVp46mxrr+YPosURLnT6NheDgnank0bJF14STqr2ek453NUNe/DAsGBoKFkw33KgWf0HAX2YZkyR6q9Vw4o41fsTD8tVWngnnV1Xnp6+oZV8rNMS3nTanZgg1gyHlg5zzeGCjnZDmVql+pl6EPFhFXIVXdRT0gRUMkj52sbOFzY+DTznCbS+bj6lqtjc5MoIyjud9EOS6/enGR7UyRkqOY5uI6757jm+I4hLjutrUr394/Ujj99zt66BI0ULrZbekEMtV3P1xabDfDG/aL920O64I3zL0eB28pQzb8OBWjCa8SWNSK+zmXD67fvzL/QyMAE5MdJNXCaO9VP5Pc8Cm6x3g==" 
+
+function openSecureModal() {
+  document.getElementById('secure-modal').classList.remove('hidden');
+  document.getElementById('secure-password').value = '';
+  document.getElementById('secure-content').style.display = 'none';
+  document.getElementById('secure-error').style.display = 'none';
+  document.body.style.overflow = 'hidden';
+}
+function closeSecureModal() {
+  document.getElementById('secure-modal').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+function decryptSecureContent() {
+  const pw = document.getElementById('secure-password').value;
+  document.getElementById('secure-content').style.display = 'none';
+  document.getElementById('secure-error').textContent = "Invalid password.";
+  document.getElementById('secure-error').style.display = 'block';
+  const decrypted = CryptoJS.AES.decrypt(encryptedString, pw).toString(CryptoJS.enc.Utf8);
+  if (decrypted && decrypted.length > 0) {
+    document.getElementById('secure-content').innerHTML = decrypted;
+    document.getElementById('secure-content').style.display = 'block';
+    document.getElementById('secure-error').style.display = 'none';
+  }
+}
+
+// Open modal from nav
+document.getElementById('secure-link').addEventListener('click', function(e){
+  e.preventDefault();
+  openSecureModal();
+});
+
+
 // Initialize scroll animations after a short delay
 setTimeout(setupScrollAnimations, 500);
 
