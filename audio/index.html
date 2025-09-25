@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alberto Benavent Ramón - Senior Programmer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Alberto Benavent Ramón</a>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link" data-en="Home" data-es="Inicio">Home</a>
+                <a href="#projects" class="nav-link" data-en="Projects" data-es="Proyectos">Projects</a>
+                <a href="#about" class="nav-link" data-en="About" data-es="Acerca de">About</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-es="Contacto">Contact</a>
+                <a href="#" class="nav-link" id="secure-link" data-en="Password" data-es="Contraseña">Password</a>
+
+                <button class="language-toggle" onclick="toggleLanguage()">
+                    <span class="lang-option active" data-lang="en">EN</span>
+                    <span class="lang-divider">|</span>
+                    <span class="lang-option" data-lang="es">ES</span>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+<main class="contact-section">
+    <div class="container">
+    
+        <h2 class="section-title" data-en="Audio Programming work" data-es="Programación de audio">Audio Programming work
+        </h2>
+        <p class="contact-text" data-en="Here are some of the projects that I have done audio programming on:"
+            data-es="Estos son algunos de los proyectos en los que he hecho programación de audio:">
+            Here are some of the projects that I have done audio programming on:
+        </p>
+        <h3 class="section-title" data-en="Telefónica Haptic Arena" data-es="Telefónica Haptic Arena">Telefónica Haptic
+            Arena</h3>
+        <iframe class="embed-video" width="560" height="315" src="https://www.youtube.com/embed/9CiWP5Lu-HI?si=jW2ZbvwAT3_YgSjk&amp;start=27"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+        <h3 class="section-title" data-en="Pinbubble" data-es="Pinbubble">Pinbubble</h3>
+        <iframe class="embed-video" width="560" height="315" src="https://www.youtube.com/embed/Suvu8FJVbK0?si=RvvfVMeZwg-nRTX0&amp;start=9"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</main>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-en="Get In Touch" data-es="Contacto">Get In Touch</h2>
+            <div class="contact-content">
+                <p class="contact-text" data-en="Interested in collaborating? Let's create something amazing together."
+                   data-es="¿Interesado en colaborar? Creemos algo increíble juntos.">
+                   Interested in collaborating? Let's create something amazing together.
+                </p>
+                <div class="contact-info">
+                    <a href="mailto:alberto.benavent@gmail.com" class="contact-email">alberto.benavent@gmail.com</a>
+                </div>
+                <div class="other-work">
+                    <h3 data-en="Other Work" data-es="Otros Trabajos">Other Work</h3>
+                    <a href="https://abramaran.itch.io/" target="_blank" class="contact-link" data-en="Itch.io profile" data-es="Perfil de Itch.io">Itch.io profile</a>
+                    <a href="http://abramaran.com/" target="_blank" class="contact-link" data-en="Older personal projects" data-es="Proyectos personales anteriores">Older personal projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Email Button -->
+    <div class="floating-email">
+        <a href="mailto:alberto.benavent@gmail.com" class="email-fab" title="Email Alberto">
+            <span>✉</span>
+        </a>
+    </div>
+
+    <!-- Code links modal -->
+    <div id="secure-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeSecureModal()"></div>
+        <div class="modal-content" style="padding: 2rem;">
+            <button class="modal-close" onclick="closeSecureModal()">×</button>
+            <h3 id="secure-modal-title">Enter password to view</h3>
+            <input type="password" id="secure-password" placeholder="Password" />
+            <button onclick="decryptSecureContent()">Unlock</button>
+            <div id="secure-content" style="display:none; margin-top:1em;"></div>
+            <div id="secure-error" style="color:#c00; margin-top:0.5em; display:none;"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
