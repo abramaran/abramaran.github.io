@@ -11,122 +11,111 @@
 
   <!-- Page-local styles: scoped to .writeup only -->
   <style>
-    /* Layout */
-    .writeup {
-      background: var(--color-cream-100);
-      color: var(--color-charcoal-800);
-      padding: 4em 0;
-    }
+/* Layout */
+.writeup {
+  color: var(--color-text);
+  padding: 4em 0;
+  color-scheme: dark; /* hint for form controls */
+}
 
-    .writeup .container {
-      max-width: 920px;
-    }
+.writeup .container {
+  max-width: 920px;
+}
 
-    /* Prose typography */
-    .prose {
-      line-height: 1.7;
-      font-size: 1.06rem;
-    }
+/* Prose typography */
+.prose {
+  line-height: 1.7;
+  font-size: 1.06rem;
+}
 
-    .prose h1,
-    .prose h2,
-    .prose h3 {
-      color: var(--color-slate-900);
-      line-height: 1.2;
-      margin: 1.6rem 0 0.8rem 0;
-      font-weight: 700;
-    }
+.prose h1,
+.prose h2,
+.prose h3 {
+  color: var(--color-text);
+  line-height: 1.2;
+  margin: 1.6rem 0 0.8rem 0;
+  font-weight: 700;
+}
 
-    .prose h1 {
-      font-size: clamp(1.8rem, 2.4vw + 1rem, 2.4rem);
-    }
+.prose h1 { font-size: clamp(1.8rem, 2.4vw + 1rem, 2.4rem); }
+.prose h2 { font-size: clamp(1.4rem, 1.8vw + 1rem, 1.8rem); }
+.prose h3 { font-size: clamp(1.2rem, 1.2vw + 1rem, 1.4rem); }
 
-    .prose h2 {
-      font-size: clamp(1.4rem, 1.8vw + 1rem, 1.8rem);
-    }
+.prose p {
+  margin: 1rem 0;
+  color: var(--color-text-secondary);
+}
 
-    .prose h3 {
-      font-size: clamp(1.2rem, 1.2vw + 1rem, 1.4rem);
-    }
+.prose a {
+  color: var(--color-text);
+  text-decoration: underline;
+}
 
-    .prose p {
-      margin: 1rem 0;
-      color: var(--color-charcoal-800);
-    }
+.prose ul,
+.prose ol { margin: 1rem 0 1rem 1.2rem; }
 
-    .prose a {
-      color: rgb(var(--color-teal-500-rgb));
-      text-decoration: underline;
-    }
+.prose li { margin: 0.25rem 0; }
 
-    .prose ul,
-    .prose ol {
-      margin: 1rem 0 1rem 1.2rem;
-    }
+.prose blockquote {
+  margin: 1.4rem 0;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--color-teal-400);
+  background: rgba(var(--color-teal-500-rgb), 0.12);
+  color: var(--color-cream-100);
+}
 
-    .prose li {
-      margin: 0.25rem 0;
-    }
+.prose hr {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  margin: 2rem 0;
+}
 
-    .prose blockquote {
-      margin: 1.4rem 0;
-      padding: 1rem 1.2rem;
-      border-left: 3px solid var(--color-teal-500);
-      background: rgba(var(--color-teal-500-rgb), 0.08);
-      color: var(--color-slate-900);
-    }
+/* Media blocks */
+.media {
+  margin: 1.6rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-charcoal-700);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
 
-    .prose hr {
-      border: 0;
-      border-top: 1px solid rgba(var(--color-slate-500-rgb), 0.25);
-      margin: 2rem 0;
-    }
+.media img,
+.media video,
+.media iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-    /* Media blocks */
-    .media {
-      margin: 1.6rem 0;
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--color-cream-50);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    }
+/* Responsive 16:9 embeds */
+.embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-black);
+}
 
-    .media img,
-    .media video,
-    .media iframe {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+.embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
-    /* Responsive 16:9 embeds */
-    .embed {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: var(--color-black);
-    }
+/* Captions */
+.media figcaption {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
 
-    .embed iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* Captions */
-    .media figcaption {
-      padding: 0.6rem 0.9rem;
-      font-size: 0.92rem;
-      color: var(--color-gray-400);
-      background: rgba(var(--color-slate-500-rgb), 0.04);
-    }
-
-    /* Header spacing so content sits nicely under navbar */
-    .header+.writeup .container {
-      padding-top: var(--space-8);
-    }
+/* Header spacing so content sits nicely under navbar */
+.header + .writeup .container {
+  padding-top: var(--space-8);
+}
   </style>
 </head>
 
@@ -150,7 +139,7 @@
         </nav>
 
         <div class="language-toggle">
-          <button class="lang-btn" data-lang="en">EN</button><span></span>
+          <button class="lang-btn active" data-lang="en">EN</button><span></span>
           <button class="lang-btn" data-lang="es">ES</button>
         </div>
 
