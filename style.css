@@ -1133,11 +1133,11 @@ body {
   transition: all var(--duration-normal) var(--ease-standard);
 }
 
-.ability-card:hover {
+/* .ability-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-primary);
   box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
-}
+} */
 
 .ability-card h3 {
   font-size: var(--font-size-lg);
