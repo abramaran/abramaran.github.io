@@ -1261,6 +1261,20 @@ body {
   box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
 }
 
+.contact-social {
+  padding-top: var(--space-24);
+}
+
+/* Icon + label spacing for buttons that include inline SVGs */
+.btn svg {
+  margin-right: var(--space-8);
+  flex-shrink: 0;
+}
+.btn .btn-label {
+  display: inline-block;
+}
+
+
 /* Modal */
 .modal {
   position: fixed;
