@@ -468,17 +468,52 @@ function initModal() {
 
 function closeModal() {
   const modal = document.getElementById('projectModal');
+
+  // Stop any playing media first
+  stopAllModalMedia();
+
   modal.classList.remove('show');
   setTimeout(() => {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
+
+    // Optional: clear media UI so reopening starts fresh
+    const container = document.querySelector('.media-container');
+    const dots = document.querySelector('.media-dots');
+    if (container) container.innerHTML = '';
+    if (dots) dots.innerHTML = '';
   }, 300);
-  
+
   currentProject = null;
   currentMediaSlide = 0;
 }
 
 // Media Carousel Functions
+
+// Stop all media inside a given root element (videos and embeds)
+function stopMediaInElement(root) {
+  if (!root) return;
+  // Pause and reset <video>
+  root.querySelectorAll('video').forEach(v => {
+    try { v.pause(); } catch (_) {}
+    try { v.currentTime = 0; } catch (_) {}
+  });
+  // Reload <iframe> (YouTube/Drive/etc.) to stop playback
+  root.querySelectorAll('iframe').forEach(f => {
+    const src = f.getAttribute('src') || f.dataset?.src || '';
+    if (src) {
+      // Reloading the same src stops playback without needing enablejsapi
+      f.setAttribute('src', src);
+    }
+  });
+}
+
+// Convenience: stop everything inside the modal
+function stopAllModalMedia() {
+  const modal = document.getElementById('projectModal');
+  stopMediaInElement(modal);
+}
+
 function initMediaCarousel(media) {
   if (!media || media.length === 0) return;
   
@@ -502,15 +537,20 @@ function initMediaCarousel(media) {
         content = `<img src="${item.src}" alt="${item.alt || item.title}" title="${item.title}">`;
         break;
       case 'video':
-        content = `<video controls><source src="${item.src}" type="video/mp4"></video>`;
+        content = `<video controls preload="metadata"><source src="${item.src}" type="video/mp4"></video>`;
         break;
       case 'embed':
-        content = `<iframe src="${item.src}" frameborder="0" allowfullscreen></iframe>`;
+        content = `<iframe src="${item.src}" data-src="${item.src}" frameborder="0" allowfullscreen></iframe>`;
         break;
     }
     
     mediaEl.innerHTML = content;
     container.appendChild(mediaEl);
+
+    const iframe = mediaEl.querySelector('iframe');
+    if (iframe && !iframe.dataset.src) {
+      iframe.dataset.src = iframe.getAttribute('src') || '';
+    }
     
     // Create dot
     const dot = document.createElement('button');
@@ -549,29 +589,24 @@ function initMediaCarousel(media) {
 function changeMediaSlide(newSlide) {
   const mediaItems = document.querySelectorAll('.media-item');
   const dots = document.querySelectorAll('.media-dot');
-  
   if (mediaItems.length === 0) return;
-  
+
   // Handle wraparound
   if (newSlide >= mediaItems.length) newSlide = 0;
   if (newSlide < 0) newSlide = mediaItems.length - 1;
-  
+
+  // Stop media in the slide we are leaving
+  const prevItem = mediaItems[currentMediaSlide];
+  if (prevItem) stopMediaInElement(prevItem);
+
   // Update active states
-  if (mediaItems[currentMediaSlide]) {
-    mediaItems[currentMediaSlide].classList.remove('active');
-  }
-  if (dots[currentMediaSlide]) {
-    dots[currentMediaSlide].classList.remove('active');
-  }
-  
+  if (mediaItems[currentMediaSlide]) mediaItems[currentMediaSlide].classList.remove('active');
+  if (dots[currentMediaSlide]) dots[currentMediaSlide].classList.remove('active');
+
   currentMediaSlide = newSlide;
-  
-  if (mediaItems[currentMediaSlide]) {
-    mediaItems[currentMediaSlide].classList.add('active');
-  }
-  if (dots[currentMediaSlide]) {
-    dots[currentMediaSlide].classList.add('active');
-  }
+
+  if (mediaItems[currentMediaSlide]) mediaItems[currentMediaSlide].classList.add('active');
+  if (dots[currentMediaSlide]) dots[currentMediaSlide].classList.add('active');
 }
 
 // Navigation Functions
