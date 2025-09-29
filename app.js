@@ -422,6 +422,19 @@ function initProjects() {
   });
 }
 
+function resetModalScroll(modalEl) {
+  if (!modalEl) return;
+  const targets = [
+    modalEl.querySelector('.modal-content'),
+    modalEl.querySelector('.modal-body'),
+    modalEl
+  ].filter(Boolean);
+  targets.forEach(el => {
+    el.scrollTop = 0;
+    el.scrollLeft = 0;
+  });
+}
+
 function openProjectModal(projectId) {
   const project = projectData[projectId];
   if (!project) return;
@@ -436,9 +449,13 @@ function openProjectModal(projectId) {
   
   // Show modal
   const modal = document.getElementById('projectModal');
+  resetModalScroll(modal);
   modal.classList.remove('hidden');
-  setTimeout(() => modal.classList.add('show'), 10);
-  
+  requestAnimationFrame(() => {
+    resetModalScroll(modal);
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  });  
   // Prevent body scroll
   document.body.style.overflow = 'hidden';
   
