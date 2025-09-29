@@ -904,14 +904,31 @@ body {
 
 .hero-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-  transition: all 2s ease-in-out;
-  z-index: 1;
+  inset: 0;              /* replaces top/left/right/bottom */
+  pointer-events: none;  /* keep it non-interactive */
+  z-index: 1;            /* stays under .hero-content which is z-index:2 */
+  --g1: none;            /* JS will set these */
+  --g2: none;            /* JS will set these */
+  /* Important: remove the previous background: radial-gradient(...) and transition: all ... lines */
 }
+
+/* Add these new layered cross-fade rules */
+.hero-bg::before,
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-bg::before { background-image: var(--g1); }
+.hero-bg::after  { background-image: var(--g2); }
+
+.hero-bg[data-active="1"]::before { opacity: 1; }
+.hero-bg[data-active="2"]::after  { opacity: 1; }
 
 .hero-content {
   display: grid;

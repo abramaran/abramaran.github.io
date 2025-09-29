@@ -287,8 +287,9 @@ function initCarousel() {
   const heroBg = document.querySelector('.hero-bg');
   
   // Set initial background
-  updateAmbientBackground(0);
-  
+  updateAmbientBackground(0, true);
+  window.addEventListener('resize', () => updateAmbientBackground(currentSlide));
+
   // Auto-advance carousel
   startCarouselAutoplay();
   
@@ -338,16 +339,38 @@ function changeSlide(newSlide) {
   updateAmbientBackground(currentSlide);
 }
 
-function updateAmbientBackground(slideIndex) {
+// Replace updateAmbientBackground with this version
+function updateAmbientBackground(slideIndex, instant = false) {
   const slide = document.querySelectorAll('.carousel-slide')[slideIndex];
-  const bgColor = slide.dataset.bgColor || '#8B5CF6';
   const heroBg = document.querySelector('.hero-bg');
-  
-  // Create subtle ambient glow effect
-  const slideBoundingBox = slide.getBoundingClientRect();
-  const gradientPosition = slideBoundingBox.right - slideBoundingBox.width/2;
+  if (!slide || !heroBg) return;
+
+  const bgColor = slide.dataset.bgColor || '#8B5CF6';
+  const rect = slide.getBoundingClientRect();
+  const gradientPosition = Math.round(rect.right - rect.width / 2);
+
+  // Use 12.5% alpha for a subtle glow (hex alpha 0x20)
   const gradient = `radial-gradient(ellipse at ${gradientPosition}px, ${bgColor}20 0%, transparent 70%)`;
-  heroBg.style.background = gradient;
+
+  // Determine which layer to paint next
+  const active = heroBg.dataset.active === '2' ? '2' : '1';
+  const next = active === '1' ? '2' : '1';
+
+  // Update the next layer's gradient variable
+  heroBg.style.setProperty(next === '1' ? '--g1' : '--g2', gradient);
+
+  if (instant) {
+    // On first render, sync both layers and show layer 1 without fading
+    heroBg.style.setProperty('--g1', gradient);
+    heroBg.style.setProperty('--g2', gradient);
+    heroBg.dataset.active = '1';
+    return;
+  }
+
+  // Flip the visible layer to cross-fade
+  requestAnimationFrame(() => {
+    heroBg.dataset.active = next;
+  });
 }
 
 function startCarouselAutoplay() {
