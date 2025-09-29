@@ -219,7 +219,9 @@ const projectData = {
 let currentLanguage = 'en';
 let currentSlide = 0;
 let currentMediaSlide = 0;
-let carouselInterval;
+let carouselInterval = null;   // ensure null, not undefined
+const AUTOPLAY_MS = 5000;
+let hoverPaused = false;
 let currentProject = null;
 
 // Initialize the app
@@ -312,10 +314,17 @@ function initCarousel() {
     });
   });
   
-  // Pause on hover
+  // Pause on hover (use mouseenter/leave as in your code)
   const carousel = document.querySelector('.hero-carousel');
-  carousel.addEventListener('mouseenter', stopCarouselAutoplay);
-  carousel.addEventListener('mouseleave', startCarouselAutoplay);
+  carousel.addEventListener('mouseenter', () => {
+    hoverPaused = true;
+    stopCarouselAutoplay();
+  });
+  carousel.addEventListener('mouseleave', () => {
+    hoverPaused = false;
+    startCarouselAutoplay();
+  });
+
 }
 
 function changeSlide(newSlide) {
@@ -374,20 +383,23 @@ function updateAmbientBackground(slideIndex, instant = false) {
 }
 
 function startCarouselAutoplay() {
+  if (carouselInterval || hoverPaused) return;  // prevent duplicates
   carouselInterval = setInterval(() => {
     changeSlide(currentSlide + 1);
-  }, 5000);
+  }, AUTOPLAY_MS);
 }
 
 function stopCarouselAutoplay() {
   if (carouselInterval) {
     clearInterval(carouselInterval);
+    carouselInterval = null;  // normalize state
   }
 }
 
 function resetCarouselAutoplay() {
   stopCarouselAutoplay();
-  startCarouselAutoplay();
+  // Small defer aligns the next tick to a clean 5s after manual navigation
+  setTimeout(() => startCarouselAutoplay(), 0);
 }
 
 // Projects Functions
