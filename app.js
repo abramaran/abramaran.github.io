@@ -775,3 +775,73 @@ if (!('scrollBehavior' in document.documentElement.style)) {
     requestAnimationFrame(animation);
   };
 }
+
+// ===== Code Snippets (password-protected) =====
+
+// Paste the ciphertext created with CryptoJS.AES.encrypt(...).toString()
+const CODE_CIPHER = "U2FsdGVkX19e/SVdIBmzYbbsYlZxe3AgZBZXCHXerWTApNXB0l0PN2LJIs22QTX2L0GGsjKfPmgcqUq+9yYe14ETGtFHihBM1tWusR3Js6k1+R8kDZtejyEpgOrxflK+Qgy54jWrdL19iPhCsTT55qyiz08+3l4vBaF/yJgS0nBR0WXBuj2BQNJ3QiMCAB/SawIyMQOAXG4FvJEQmPQb9ez+nqI01Bh0uZ8qYUxFY+dE5Vr7MKR2Zt4jJzyND4Pzi01dE9Eesue/BaVkzU2HPdq91610pGGOkPj9tVslWw/JkkDXDiBfZb+/QxV4/JQ3kvNvCmX4bLfIMcqNblUgWUJpgdQL5kpLZ9EEAy8IbwoC0U0sfqa6CYdJ+8HB/RgA8It9vI4UKLNVWIA4aw+8b950nOth40vAS5nbd/eItppII6D30/IapuwtX7I5Pki3ikphNvXqLpMxsV7a7Iu6hCbNofjkgTIcXBA3J/P1s18A7AYiOqYzFvDNa0u5hh4/msfLqOgWBPstCKalrLXTG8cj4xbkQ6ZrA7qqKGff5sS8EpeNmmwbmNAPJniP9FMgbKck/oFp6O67I29bjXvb8RzjwpXiN4Fnw/bA1oy6ZV3H7lI8ZQqIEl62CjMqn05OJVwq1klpF0T9IF9faku2igIICWCixXJAbnDBEgyWx0gGoDEDi6Ur/wuGGZbu/omuUszHHSuNdCvj5f4HLu2USqnXbRegklh0M9MXpwdY3dmePcnL1ixDlgsm0NPyj9Be4yzzbqss4Whq+eQlM3Eu6EVRjvP6TcDTPPPkTNxVvd66Xg+5bhRaOpHw9zzMV1uW" 
+function initCodeModal() {
+  const openBtn  = document.getElementById('codeBtn');
+  const modal    = document.getElementById('codeModal');
+  if (!openBtn || !modal) return;
+
+  const closeBtn = modal.querySelector('.modal-close');
+  const backdrop = modal.querySelector('.modal-backdrop');
+  const form     = document.getElementById('codeForm');
+  const input    = document.getElementById('codePassword');
+  const errorEl  = modal.querySelector('.code-error');
+  const content  = document.getElementById('codeContent');
+
+  function openCodeModal() {
+    modal.classList.remove('hidden');
+    setTimeout(() => modal.classList.add('show'), 10);
+    document.body.style.overflow = 'hidden';
+    if (typeof trapFocus === 'function') trapFocus(modal);
+    setTimeout(() => input?.focus(), 50);
+  }
+
+  function closeCodeModal() {
+    modal.classList.remove('show');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      // Reset UI state
+      form?.reset();
+      errorEl?.classList.add('hidden');
+      if (content) {
+        content.innerHTML = '';
+        content.classList.add('hidden');
+      }
+    }, 250);
+  }
+
+  openBtn.addEventListener('click', (e) => { e.preventDefault(); openCodeModal(); });
+  closeBtn?.addEventListener('click', closeCodeModal);
+  backdrop?.addEventListener('click', closeCodeModal);
+  modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCodeModal(); });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pass = (input?.value || '').trim();
+    try {
+      const bytes = CryptoJS.AES.decrypt(CODE_CIPHER, pass);
+      const html  = bytes.toString(CryptoJS.enc.Utf8);
+      if (!html) throw new Error('Bad password');
+      if (content) {
+        content.innerHTML = html;
+        content.classList.remove('hidden');
+      }
+      errorEl?.classList.add('hidden');
+      input.value = '';
+    } catch {
+      errorEl?.classList.remove('hidden');
+      content?.classList.add('hidden');
+      if (content) content.innerHTML = '';
+    }
+  });
+}
+
+// Hook into existing startup flow
+document.addEventListener('DOMContentLoaded', function () {
+  initCodeModal();
+});

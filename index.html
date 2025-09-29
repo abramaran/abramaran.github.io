@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alberto Benavent Ramón - Senior Gameplay Programmer</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -20,6 +21,7 @@
                         <a href="#abilities" data-en="Abilities" data-es="Habilidades">Abilities</a>
                         <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
                         <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+                        <button id="codeBtn" class="btn btn--outline btn--sm" data-en="Password" data-es="Contraseña">Password</button>
                     </div>
                     <div class="language-toggle">
                         <button class="lang-btn" data-lang="en">EN</button>
@@ -306,6 +308,33 @@
                     </div>
                     <div class="modal-links"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets Modal -->
+    <div id="codeModal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content code-modal">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h3 class="modal-title" data-en="Enter password" data-es="Introduce la contraseña">Enter password</h3>
+                    <p class="modal-subtitle" data-en="Code snippets" data-es="Fragmentos de código">Code snippets</p>
+                </div>
+    
+                <form id="codeForm" class="code-form">
+                    <label class="form-label" for="codePassword" data-en="Password" data-es="Contraseña">Password</label>
+                    <input type="password" id="codePassword" class="form-control" autocomplete="current-password"
+                        placeholder="Password">
+                    <div class="code-error status status--error hidden" data-en="Incorrect password"
+                        data-es="Contraseña incorrecta">Incorrect password</div>
+                    <button type="submit" class="btn btn--primary mt-8" data-en="Unlock"
+                        data-es="Desbloquear">Unlock</button>
+                </form>
+    
+                <!-- Decrypted links will be injected here -->
+                <div id="codeContent" class="modal-links mt-8 hidden"></div>
             </div>
         </div>
     </div>

@@ -1526,6 +1526,17 @@ body {
   display: none !important;
 }
 
+/* Narrower dialog for the password modal */
+.modal-content.code-modal {
+  width: 560px;
+  max-width: 90vw;
+}
+
+/* Minor layout niceties */
+.mt-8 { margin-top: var(--space-8); } /* already present in utilities; keep if defined */
+.code-form .status { margin-top: var(--space-8); }
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
