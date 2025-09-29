@@ -949,6 +949,22 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Keep hero name on one line */
+.hero-text .hero-name {
+  white-space: nowrap;
+}
+
+/* Optional: micro-typography on small screens to prevent overflow */
+@media (max-width: 420px) {
+  .hero-text h1 {
+    letter-spacing: -0.01em;
+  }
+  .hero-text .hero-name {
+    font-size: 0.98em; /* slight scale to keep in one line */
+  }
+}
+
+
 .hero-text h2 {
   font-size: var(--font-size-2xl);
   color: var(--color-primary);
