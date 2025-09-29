@@ -1,294 +1,261 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alberto Benavent Ramón - Senior Programmer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Alberto Benavent Ramón - Senior Gameplay Programmer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">Alberto Benavent Ramón</a>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link" data-en="Home" data-es="Inicio">Home</a>
-                <a href="#projects" class="nav-link" data-en="Projects" data-es="Proyectos">Projects</a>
-                <a href="#about" class="nav-link" data-en="About" data-es="Acerca de">About</a>
-                <a href="#contact" class="nav-link" data-en="Contact" data-es="Contacto">Contact</a>
-                <a href="#" class="nav-link" id="secure-link" data-en="Password" data-es="Contraseña">Password</a>
-
-                <button class="language-toggle" onclick="toggleLanguage()">
-                    <span class="lang-option active" data-lang="en">EN</span>
-                    <span class="lang-divider">|</span>
-                    <span class="lang-option" data-lang="es">ES</span>
-                </button>
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span data-en="Alberto Benavent" data-es="Alberto Benavent">Alberto Benavent</span>
+                </div>
+                <nav class="nav">
+                    <div class="nav-links">
+                        <a href="#about" data-en="About" data-es="Acerca">About</a>
+                        <a href="#abilities" data-en="Abilities" data-es="Habilidades">Abilities</a>
+                        <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
+                        <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+                    </div>
+                    <div class="language-toggle">
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <span>|</span>
+                        <button class="lang-btn" data-lang="es">ES</button>
+                    </div>
+                    <button class="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-geometric">
-                <div class="geo-shape geo-rectangle"></div>
-                <div class="geo-shape geo-circle"></div>
-                <div class="geo-shape geo-triangle"></div>
-            </div>
-            <h1 class="hero-title">Alberto Benavent Ramón</h1>
-            <p class="hero-subtitle" data-en="Senior Unreal Engine Programmer" data-es="Programador Senior Unreal Engine">Senior Unreal Engine Programmer</p>
-            <p class="hero-description" data-en="Unreal · C++ · XR" data-es="Unreal · C++ · XR">Unreal · C++ · XR</p>
-            <p class="hero-text" 
-               data-en="Over 4 years of experience crafting games and immersive applications. I love the technical side of development, but I also approach game programming with a design mindset, always considering how each mechanic or feature can enhance the experience we want to create."
-               data-es="Más de 4 años de experiencia desarrollando juegos y aplicaciones inmersivas. Me encanta el lado técnico del desarrollo, pero también abordo la programación de juegos con una mentalidad de diseño, considerando siempre cómo cada mecánica o característica puede mejorar la experiencia que queremos crear.">
-               Over 4 years of experience crafting games and immersive applications. I love the technical side of development, but I also approach game programming with a design mindset, always considering how each mechanic or feature can enhance the experience we want to create.
-            </p>
-            <a href="#projects" class="cta-button" data-en="View My Work" data-es="Ver Proyectos">View My Work</a>
-        </div>
-    </section>
-
-    <!-- Projects Grid Section -->
-    <section id="projects" class="projects-section">
+    <section class="hero" id="about">
+        <div class="hero-bg"></div>
         <div class="container">
-            <h2 class="section-title" data-en="Featured Projects" data-es="Proyectos Destacados">Featured Projects</h2>
-            
-            <!-- Tag Filters -->
-            <div class="tag-filters">
-                <button class="tag-filter active" data-tag="all" data-en="All" data-es="Todos">All</button>
-                <button class="tag-filter" data-tag="Unreal Engine" data-en="Unreal Engine" data-es="Unreal Engine">Unreal Engine</button>
-                <button class="tag-filter" data-tag="VR" data-en="VR" data-es="VR">VR</button>
-                <button class="tag-filter" data-tag="Game" data-en="Game" data-es="Juego">Game</button>
-                <button class="tag-filter" data-tag="B2B" data-en="B2B" data-es="B2B">B2B</button>
-                <button class="tag-filter" data-tag="Custom Engine" data-en="Custom Engine" data-es="Motor Propio">Custom Engine</button>
-                <!-- <button class="tag-filter" data-tag="Research" data-en="Research" data-es="Investigación">Research</button> -->
-            </div>
-
-            <div class="projects-grid">
-                <div class="project-card" data-project="vr-dodgeball" data-tags="VR,Multiplayer" tabindex="0" role="button">
-                    <div class="project-thumbnail">
-                        <div class="project-cover" style="background-image: url(media/telef2.png);">
-                            <div class="project-placeholder">VR DODGEBALL</div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-basic">
-                                <h3 data-en="VR Dodgeball Multiplayer" data-es="VR Dodgeball Multijugador">VR Dodgeball Multiplayer</h3>
-                                <span class="project-main-tag">VR</span>
-                            </div>
-                            <div class="project-hover-info">
-                                <h3 data-en="VR Dodgeball Multiplayer" data-es="VR Dodgeball Multijugador">VR Dodgeball Multiplayer</h3>
-                                <p data-en="MWC 2024 Telefónica Demo" data-es="Demo de Telefónica MWC 2024">MWC 2024 Telefónica Demo</p>
-                                <div class="project-tags">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-project="vr-platform" data-tags="VR,B2B,Platform" tabindex="0" role="button">
-                    <div class="project-thumbnail">
-                        <div class="project-cover" style="background-image: url(media/extendrahub2.png);">
-                            <div class="project-placeholder">VR PLATFORM</div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-basic">
-                                <h3 data-en="VR Content Platform" data-es="Plataforma de Contenido VR">VR Content Platform</h3>
-                                <span class="project-main-tag">B2B</span>
-                            </div>
-                            <div class="project-hover-info">
-                                <h3 data-en="VR Content Platform" data-es="Plataforma de Contenido VR">VR Content Platform</h3>
-                                <p data-en="B2B Multiplayer Platform" data-es="Plataforma Multijugador B2B">B2B Multiplayer Platform</p>
-                                <div class="project-tags">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-project="vr-surf" data-tags="VR,Game,Fashion" tabindex="0" role="button">
-                    <div class="project-thumbnail">
-                        <div class="project-cover" style="background-image: url(media/surf.jpg);">
-                            <div class="project-placeholder">VR SURF</div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-basic">
-                                <h3 data-en="VR Showroom & Surf Game" data-es="Showroom VR y Juego de Surf">VR Showroom & Surf Game</h3>
-                                <span class="project-main-tag">Game</span>
-                            </div>
-                            <div class="project-hover-info">
-                                <h3 data-en="VR Showroom & Surf Game" data-es="Showroom VR y Juego de Surf">VR Showroom & Surf Game</h3>
-                                <p data-en="Pull&Bear Pacific Metaverse" data-es="Pull&Bear Pacific Metaverse">Pull&Bear Pacific Metaverse</p>
-                                <div class="project-tags">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-project="cpp-engine" data-tags="C++,Engine,Fighting Game" tabindex="0" role="button">
-                    <div class="project-thumbnail">
-                        <div class="project-cover" style="background-image: url(media/LosY2N\ \(Pequeña\).png);">
-                            <div class="project-placeholder" style="color: #050a7e;">C++ ENGINE</div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-basic">
-                                <h3 data-en="Custom C++ Game Engine" data-es="Motor de Juego C++ Propio">Custom C++ Game Engine</h3>
-                                <span class="project-main-tag">Engine</span>
-                            </div>
-                            <div class="project-hover-info">
-                                <h3 data-en="Custom C++ Game Engine" data-es="Motor de Juego C++ Propio">Custom C++ Game Engine</h3>
-                                <p data-en="Fighting Game Engine" data-es="Motor de Juego de Lucha">Fighting Game Engine</p>
-                                <div class="project-tags">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-project="tous-vr" data-tags="VR,Commercial,Fashion" tabindex="0" role="button">
-                    <div class="project-thumbnail">
-                        <div class="project-cover" style="background-image: url(media/tous2.png);">
-                            <div class="project-placeholder">TOUS VR</div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-basic">
-                                <h3 data-en="TOUS VR Showroom" data-es="TOUS Showroom VR">TOUS VR Showroom</h3>
-                                <span class="project-main-tag">Commercial</span>
-                            </div>
-                            <div class="project-hover-info">
-                                <h3 data-en="TOUS VR Showroom" data-es="TOUS Showroom VR">TOUS VR Showroom</h3>
-                                <p data-en="Fashion Brand Experience" data-es="Experiencia para Marca de Moda">Fashion Brand Experience</p>
-                                <div class="project-tags">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                                <div class="project-card" data-project="playdate" data-tags="Research,C,Playdate" tabindex="0" role="button">
-                    <div class="project-thumbnail">
-                        <div class="project-cover" style="background-image: url(media/playdate2.png);">
-                            <div class="project-placeholder">PLAYDATE</div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-basic">
-                                <h3 data-en="Playdate Game Development" data-es="Desarrollo de Juegos Playdate">Playdate Game Development</h3>
-                                <span class="project-main-tag">Research</span>
-                            </div>
-                            <div class="project-hover-info">
-                                <h3 data-en="Playdate Game Development" data-es="Desarrollo de Juegos Playdate">Playdate Game Development</h3>
-                                <p data-en="Bachelor's Thesis Project" data-es="Trabajo de Fin de Grado">Bachelor's Thesis Project</p>
-                                <div class="project-tags">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Details Modal -->
-    <div id="project-modal" class="modal hidden">
-        <div class="modal-overlay" onclick="closeModal()"></div>
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div class="project-details">
-                <!-- Carousel Section -->
-                <div class="project-carousel">
-                    <div class="carousel-container">
-                        <div class="carousel-slide active">
-                            <div class="placeholder-media">Video Placeholder 1</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="placeholder-media">Image Placeholder 1</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="placeholder-media">Image Placeholder 2</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="placeholder-media">Video Placeholder 2</div>
-                        </div>
-                    </div>
-                    <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">‹</button>
-                    <button class="carousel-btn carousel-next" onclick="changeSlide(1)">›</button>
-                    <div class="carousel-dots">
-                        <span class="dot active" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                    </div>
-                </div>
-                
-                <!-- Project Info Section -->
-                <div class="project-header">
-                    <h2 class="project-title"></h2>
-                    <p class="project-subtitle"></p>
-                    <div class="project-tech"></div>
-                    <div class="project-client"></div>
-                    <div class="project-role"></div>
-                </div>
-                
-                <div class="project-longinfo">
-                    <div class="project-description"></div>
-                    <div class="project-features">
-                        <h4 data-en="Key Features" data-es="Características">Key Features</h4>
-                        <ul class="features-list"></ul>
-                        </div>
-                        <div class="project-external-links">
-                            <h4 data-en="External Links" data-es="Enlaces">External Links</h4>
-                            <ul class="external-links-list"></ul>
-                        </div>
-                        
-                        </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title" data-en="About Me" data-es="Acerca de Mí">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p data-en="My passion lies in combining technical expertise with creativity to build engaging and responsive gameplay that resonates with players."
-                       data-es="Mi pasión está en combinar la experiencia técnica con la creatividad para construir jugabilidad atractiva y responsiva que resuene con los jugadores.">
-                       My passion lies in combining technical expertise with creativity to build engaging and responsive gameplay that resonates with players.
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Alberto Benavent Ramón</h1>
+                    <h2 data-en="Multimedia Engineer" data-es="Ingeniero Multimedia">Multimedia Engineer</h2>
+                    <p class="hero-subtitle">Unreal Engine · C++ · XR</p>
+                    <p class="hero-description" 
+                       data-en="Over 4 years of experience crafting games and immersive applications. I love the technical side of development, but I also approach game programming with a design mindset, always considering how each mechanic or feature can enhance the experience we want to create."
+                       data-es="Más de 4 años de experiencia creando juegos y aplicaciones inmersivas. Me encanta el lado técnico del desarrollo, pero también abordo la programación de juegos con una mentalidad de diseño, siempre considerando cómo cada mecánica o característica puede mejorar la experiencia que queremos crear.">
+                       Over 4 years of experience crafting games and immersive applications. I love the technical side of development, but I also approach game programming with a design mindset, always considering how each mechanic or feature can enhance the experience we want to create.
                     </p>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <h4>XR/VR/AR Development</h4>
-                            <p>Meta Quest, CloudXR, SparkAR</p>
+                </div>
+                <div class="hero-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide active" data-bg-color="#CFE6EB">
+                            <div class="slide-image" style="background-image: url('media/telef2.png')"></div>
+                            <div class="slide-text">
+                                <h3 data-en="MWC 2024 Telefónica Demo" data-es="Demo de Telefónica MWC 2024">MWC 2024 Telefónica Demo</h3>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <h4>Gameplay Programming</h4>
-                            <p>Unreal Engine, C++, Blueprints</p>
+                        <div class="carousel-slide" data-bg-color="#6187B0">
+                            <div class="slide-image" style="background-image: url('media/extendrahub2.png')"></div>
+                            <div class="slide-text">
+                                <h3 data-en="B2B Multiplayer Platform" data-es="Plataforma Multijugador B2B">B2B Multiplayer Platform</h3>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <h4>Game Engine Programming</h4>
-                            <p>Custom C/C++ Engines, Unreal</p>
+                        <div class="carousel-slide" data-bg-color="#106DCB">
+                            <div class="slide-image" style="background-image: url('media/surf.jpg')"></div>
+                            <div class="slide-text">
+                                <h3 data-en="Pull&Bear Pacific Metaverse" data-es="Metaverso Pacific Pull&Bear">Pull&Bear Pacific Metaverse</h3>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <h4>Cloud & Network</h4>
-                            <p>AWS, GameLift, Unreal Replication</p>
+                        <div class="carousel-slide" data-bg-color="#D99652">
+                            <div class="slide-image" style="background-image: url('media/LosY2N\ \(Pequeña\).png')"></div>
+                            <div class="slide-text">
+                                <h3 data-en="Fighting Game Engine" data-es="Motor de Juego de Lucha">Fighting Game Engine</h3>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <h4>Project Management</h4>
-                            <p>Agile, Kanban, Design, Planning</p>
+                        <div class="carousel-slide" data-bg-color="#705F6C">
+                            <div class="slide-image" style="background-image: url('media/tous2.png')"></div>
+                            <div class="slide-text">
+                                <h3 data-en="Fashion Brand Experience" data-es="Experiencia de Marca de Moda">Fashion Brand Experience</h3>
+                            </div>
                         </div>
-                        <div class="skill-item">
-                            <h4>Programming</h4>
-                            <p>C++, C, Lua, JavaScript</p>
+                        <div class="carousel-slide" data-bg-color="#5C17EA">
+                            <div class="slide-image" style="background-image: url('media/playdate2.png')"></div>
+                            <div class="slide-text">
+                                <h3 data-en="Bachelor's Thesis Project" data-es="Proyecto de Tesis de Licenciatura">Bachelor's Thesis Project</h3>
+                            </div>
                         </div>
+                    </div>
+                    <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
+                    <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
+                    <div class="carousel-dots">
+                        <button class="dot active" data-slide="0"></button>
+                        <button class="dot" data-slide="1"></button>
+                        <button class="dot" data-slide="2"></button>
+                        <button class="dot" data-slide="3"></button>
+                        <button class="dot" data-slide="4"></button>
+                        <button class="dot" data-slide="5"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abilities Section -->
+    <section class="abilities" id="abilities">
+        <div class="container">
+            <h2 data-en="Abilities & Expertise" data-es="Habilidades y Experiencia">Abilities & Expertise</h2>
+            <div class="abilities-grid">
+                <div class="ability-card">
+                    <div class="ability-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <path d="m22 2-5 10-5-4-5 10"></path>
+                        </svg>
+                    </div>
+                    <h3 data-en="Project Leadership & Team Management" data-es="Liderazgo de Proyectos y Gestión de Equipos">Project Leadership & Team Management</h3>
+                    <ul>
+                        <li data-en="Led cross-functional teams in delivering VR projects from conception to Meta Quest Store release" data-es="Lideré equipos multifuncionales en la entrega de proyectos VR desde la concepción hasta el lanzamiento en Meta Quest Store">Led cross-functional teams in delivering VR projects from conception to Meta Quest Store release</li>
+                        <li data-en="Managed client relationships and project scope for major brands including Telefónica, Pull&Bear, and TOUS" data-es="Gestioné relaciones con clientes y alcance de proyectos para marcas importantes como Telefónica, Pull&Bear y TOUS">Managed client relationships and project scope for major brands including Telefónica, Pull&Bear, and TOUS</li>
+                        <li data-en="Coordinated development timelines across multiple B2B and consumer-facing projects" data-es="Coordiné cronogramas de desarrollo en múltiples proyectos B2B y orientados al consumidor">Coordinated development timelines across multiple B2B and consumer-facing projects</li>
+                    </ul>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6"></path>
+                            <path d="m21 12-6 0m-6 0-6 0"></path>
+                        </svg>
+                    </div>
+                    <h3 data-en="Multiplayer Systems & Networking" data-es="Sistemas Multijugador y Redes">Multiplayer Systems & Networking</h3>
+                    <ul>
+                        <li data-en="Architected networked gameplay mechanics for concurrent multiplayer VR and PC users using Unreal Engine replication" data-es="Arquitecturé mecánicas de juego en red para usuarios multijugador concurrente en VR y PC usando la replicación de Unreal Engine">Architected networked gameplay mechanics for concurrent multiplayer VR and PC users using Unreal Engine replication</li>
+                        <li data-en="Developed voice chat plugins and WebAPI communication systems for real-time collaboration" data-es="Desarrollé plugins de chat de voz y sistemas de comunicación WebAPI para colaboración en tiempo real">Developed voice chat plugins and WebAPI communication systems for real-time collaboration</li>
+                        <li data-en="Worked with AWS sevices including GameLift integration and custom networking optimizations for low-latency interactions" data-es="Trabajé con servicios de AWS incluyendo GameLift y optimizaciones de red personalizadas para asegurar interacciones de baja latencia">Worked with AWS sevices including GameLift integration and custom networking optimizations for low-latency interactions</li>
+                    </ul>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3 data-en="VR/XR Development Expertise" data-es="Experiencia en Desarrollo VR/XR">VR/XR Development Expertise</h3>
+                    <ul>
+                        <li data-en="Shipped multiple VR applications on Meta Quest Store with complex interaction systems" data-es="Lancé múltiples aplicaciones VR en Meta Quest Store con sistemas de interacción complejos">Shipped multiple VR applications on Meta Quest Store with complex interaction systems</li>
+                        <li data-en="Specialized in Research and Development of cutting-edge integrations such as NVIDIA CloudXR cloud rendering or haptic device integrations" data-es="Especializado en Investigación y Desarrollo de tecnologías punteras como renderizado en la nube con NVIDIA CloudXR o integración con periféricos hápticos">Specialized in Research and Development of cutting-edge integrations such as NVIDIA CloudXR cloud rendering or haptic device integrations</li>
+                        <li data-en="Expert in VR design and development for training, gaming, educational and business applications" data-es="Experto en diseño y desarrollo de aplicaciones VR para videojuegos, formación y usos educativos y comerciales">Expert in VR design and development for training, gaming, educational and business applications</li>
+                    </ul>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 data-en="Engine Architecture & Custom Tools" data-es="Arquitectura de Motor y Herramientas Personalizadas">Engine Architecture & Custom Tools</h3>
+                    <ul>
+                        <li data-en="Built custom C++ and C game engines from scratch based on a Entity Component System architecture" data-es="Construí motores de juego desde cero en C++ y C basados en la arquitectura Entidad Componente Sistema">Built custom C++ and C game engines from scratch based on a Entity Component System architecture</li>
+                        <li data-en="Architected and developed modular Unreal Engine plugin frameworks for rapid VR application development" data-es="Arquitecturé y desarrollé frameworks de plugins modulares de Unreal Engine para desarrollo rápido de aplicaciones VR">Architected and developed modular Unreal Engine plugin frameworks for rapid VR application development</li>
+                        <li data-en="Led the planning and specification of the core Unreal Engine tech stack of my last employer" data-es="Gestioné la planificación y especificación del core tecnológico de Unreal Engine de mi último empleador">Led the planning and specification of the core Unreal Engine tech stack of my last employer</li>
+                    </ul>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3 data-en="Cross-Platform Development" data-es="Desarrollo Multiplataforma">Cross-Platform Development</h3>
+                    <ul>
+                        <li data-en="Delivered applications across Meta Quest, PC, Pixel Streaming, and embedded console hardware" data-es="Entregué aplicaciones en Meta Quest, PC, Pixel Streaming y hardware de consola embebido">Delivered applications across Meta Quest, PC, Pixel Streaming, and embedded console hardware</li>
+                        <li data-en="Optimized performance for low-spec Unix systems and mobile VR constraints" data-es="Optimicé rendimiento para sistemas Unix de bajas especificaciones y limitaciones VR móviles">Optimized performance for low-spec Unix systems and mobile VR constraints</li>
+                        <li data-en="Implemented seamless cross-platform user experiences and content delivery systems" data-es="Implementé experiencias de usuario multiplataforma y sistemas de entrega de contenido">Implemented seamless cross-platform user experiences and content delivery systems</li>
+                    </ul>
+                </div>
+                <div class="ability-card">
+                    <div class="ability-card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg>
+                    </div>
+                    <h3 data-en="Performance Optimization" data-es="Optimización de Rendimiento">Performance Optimization</h3>
+                    <ul>
+                        <li data-en="Proficient in profiling and debugging tools across multiple platforms" data-es="Competente en herramientas de profiling y depuración en múltiples plataformas">Proficient in profiling and debugging tools across multiple platforms</li>
+                        <li data-en="Used to working with limited hardware in C++, C and Lua as well as Amstrad CPC Z80 assembly" data-es="Acostumbrado a programar para dispositivos limitados en C++, C y Lua, así como en ensamblador Z80 para Amstrad CPC">Used to working with limited hardware in C++, C and Lua as well as Amstrad CPC Z80 assembly</li>
+                        <li data-en="Rendering and network optimization" data-es="Optimización de renderizado y red">Rendering and network optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 data-en="Projects" data-es="Proyectos">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-project="vr-dodgeball">
+                    <div class="project-image" style="background-image: url('media/telef2.png')"></div>
+                    <div class="project-content">
+                        <h3 data-en="VR Dodgeball Multiplayer" data-es="VR Dodgeball Multijugador">VR Dodgeball Multiplayer</h3>
+                        <p class="project-subtitle" data-en="MWC 2024 Telefónica Demo" data-es="Demo de Telefónica MWC 2024">MWC 2024 Telefónica Demo</p>
+                        <p class="project-tech">Unreal Engine, C++/Blueprints, NVIDIA CloudXR, bHaptics, AWS</p>
+                    </div>
+                </div>
+                <div class="project-card" data-project="vr-platform">
+                    <div class="project-image" style="background-image: url('media/extendrahub2.png')"></div>
+                    <div class="project-content">
+                        <h3 data-en="VR Content Platform" data-es="Plataforma de Contenido VR">VR Content Platform</h3>
+                        <p class="project-subtitle" data-en="B2B Multiplayer Platform" data-es="Plataforma Multijugador B2B">B2B Multiplayer Platform</p>
+                        <p class="project-tech">Unreal Engine, C++/Blueprints, Pixel Streaming, React, AWS</p>
+                    </div>
+                </div>
+                <div class="project-card" data-project="vr-surf">
+                    <div class="project-image" style="background-image: url('media/surf.jpg')"></div>
+                    <div class="project-content">
+                        <h3 data-en="VR Showroom & Surf Game" data-es="Showroom VR y Juego de Surf">VR Showroom & Surf Game</h3>
+                        <p class="project-subtitle" data-en="Pull&Bear Pacific Metaverse" data-es="Pull&Bear Pacific Metaverse">
+                            Pull&Bear Pacific Metaverse</p>
+                        <p class="project-tech">Unreal Engine, C++/Blueprints, Ready Player Me, AWS</p>
+                    </div>
+                </div>
+                <div class="project-card" data-project="cpp-engine">
+                    <div class="project-image" style="background-image: url('media/LosY2N\ \(Pequeña\).png')"></div>
+                    <div class="project-content">
+                        <h3 data-en="Custom C++ Game Engine" data-es="Motor de Juego C++ Personalizado">Custom C++ Game Engine</h3>
+                        <p class="project-subtitle" data-en="Fighting Game Engine" data-es="Motor de Juego de Lucha">Fighting Game Engine</p>
+                        <p class="project-tech">C++, OpenGL, FMOD</p>
+                    </div>
+                </div>
+                <div class="project-card" data-project="tous-vr">
+                    <div class="project-image" style="background-image: url('media/tous2.png')"></div>
+                    <div class="project-content">
+                        <h3 data-en="TOUS VR Showroom" data-es="TOUS Showroom VR">TOUS VR Showroom</h3>
+                        <p class="project-subtitle" data-en="Fashion Brand Experience" data-es="Experiencia para Marca de Moda">
+                            Fashion Brand Experience
+                        </p>
+                        <p class="project-tech">VR, Commercial, Fashion</p>
+                    </div>
+                </div>
+                <div class="project-card" data-project="playdate">
+                    <div class="project-image" style="background-image: url('media/playdate2.png')"></div>
+                    <div class="project-content">
+                        <h3 data-en="Playdate Game Development" data-es="Desarrollo de Juegos Playdate">Playdate Game Development</h3>
+                        <p class="project-subtitle" data-en="Bachelor's Thesis Project" data-es="Trabajo de Fin de Grado">
+                            Bachelor's Thesis Project
+                        </p>
+                        <p class="project-tech">Research, C, Playdate</p>
                     </div>
                 </div>
             </div>
@@ -296,43 +263,50 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title" data-en="Get In Touch" data-es="Contacto">Get In Touch</h2>
+            <h2 data-en="Contact" data-es="Contacto">Contact</h2>
             <div class="contact-content">
-                <p class="contact-text" data-en="Interested in collaborating? Let's create something amazing together."
-                   data-es="¿Interesado en colaborar? Creemos algo increíble juntos.">
-                   Interested in collaborating? Let's create something amazing together.
-                </p>
-                <div class="contact-info">
-                    <a href="mailto:alberto.benavent@gmail.com" class="contact-email">alberto.benavent@gmail.com</a>
-                </div>
-                <div class="other-work">
-                    <h3 data-en="Other Work" data-es="Otros Trabajos">Other Work</h3>
-                    <a href="https://abramaran.itch.io/" target="_blank" class="contact-link" data-en="Itch.io profile" data-es="Perfil de Itch.io">Itch.io profile</a>
-                    <a href="http://abramaran.com/" target="_blank" class="contact-link" data-en="Older personal projects" data-es="Proyectos personales anteriores">Older personal projects</a>
-                </div>
+                <p data-en="Ready to discuss your next project or opportunity?" data-es="¿Listo para discutir tu próximo proyecto u oportunidad?">Ready to discuss your next project or opportunity?</p>
+                <a href="mailto:alberto.benavent@gmail.com" class="contact-email">alberto.benavent@gmail.com</a>
             </div>
         </div>
     </section>
 
-    <!-- Floating Email Button -->
-    <div class="floating-email">
-        <a href="mailto:alberto.benavent@gmail.com" class="email-fab" title="Email Alberto">
-            <span>✉</span>
-        </a>
-    </div>
+    <!-- Project Modal -->
+    <div class="modal hidden" id="projectModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">×</button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 class="modal-title"></h2>
+                    <p class="modal-subtitle"></p>
+                    <div class="modal-meta">
+                        <div class="modal-tech"></div>
+                        <div class="modal-role"></div>
+                        <div class="modal-client"></div>
+                    </div>
+                </div>
+                
+                <div class="modal-media">
+                    <div class="media-carousel">
+                        <div class="media-container"></div>
+                        <button class="media-prev" aria-label="Previous media">‹</button>
+                        <button class="media-next" aria-label="Next media">›</button>
+                        <div class="media-dots"></div>
+                    </div>
+                </div>
 
-    <!-- Code links modal -->
-    <div id="secure-modal" class="modal hidden">
-        <div class="modal-overlay" onclick="closeSecureModal()"></div>
-        <div class="modal-content" style="padding: 2rem;">
-            <button class="modal-close" onclick="closeSecureModal()">×</button>
-            <h3 id="secure-modal-title">Enter password to view</h3>
-            <input type="password" id="secure-password" placeholder="Password" />
-            <button onclick="decryptSecureContent()">Unlock</button>
-            <div id="secure-content" style="display:none; margin-top:1em;"></div>
-            <div id="secure-error" style="color:#c00; margin-top:0.5em; display:none;"></div>
+                <div class="modal-main">
+                    <div class="modal-description"></div>
+                    <div class="modal-features">
+                        <h4 data-en="Key Features" data-es="Características Clave">Key Features</h4>
+                        <ul class="features-list"></ul>
+                    </div>
+                    <div class="modal-links"></div>
+                </div>
+            </div>
         </div>
     </div>
 
