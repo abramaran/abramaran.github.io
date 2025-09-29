@@ -646,7 +646,7 @@ function changeMediaSlide(newSlide) {
 
 // Navigation Functions
 function initNavigation() {
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navLinks = document.querySelectorAll('.nav-links a, .logo-link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
