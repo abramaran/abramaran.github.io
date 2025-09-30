@@ -217,6 +217,7 @@ const projectData = {
 
 // Global state
 let currentLanguage = 'en';
+let mediaCarouselController = null;
 let currentSlide = 0;
 let currentMediaSlide = 0;
 let carouselInterval = null;   // ensure null, not undefined
@@ -438,28 +439,19 @@ function resetModalScroll(modalEl) {
 function openProjectModal(projectId) {
   const project = projectData[projectId];
   if (!project) return;
-  
   currentProject = project;
-  
-  // Update modal content
+
+  // Update text/meta first
   updateModalContent(project);
-  
-  // Initialize media carousel
+
+  // Initialize media carousel fresh for this project
   initMediaCarousel(project.media);
-  
+
   // Show modal
   const modal = document.getElementById('projectModal');
-  resetModalScroll(modal);
   modal.classList.remove('hidden');
-  requestAnimationFrame(() => {
-    resetModalScroll(modal);
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
-  });  
-  // Prevent body scroll
+  setTimeout(() => modal.classList.add('show'), 10);
   document.body.style.overflow = 'hidden';
-  
-  // Focus trap
   trapFocus(modal);
 }
 
@@ -521,20 +513,23 @@ function initModal() {
 function closeModal() {
   const modal = document.getElementById('projectModal');
 
-  // Stop any playing media first
-  stopAllModalMedia();
+  // Stop any playing media (helper from previous patch)
+  if (typeof stopAllModalMedia === 'function') stopAllModalMedia();
+
+  // Abort carousel listeners for this instance
+  if (mediaCarouselController) {
+    mediaCarouselController.abort();
+    mediaCarouselController = null;
+  }
 
   modal.classList.remove('show');
   setTimeout(() => {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
-
-    // Optional: clear media UI so reopening starts fresh
-    const container = document.querySelector('.media-container');
-    const dots = document.querySelector('.media-dots');
-    if (container) container.innerHTML = '';
-    if (dots) dots.innerHTML = '';
-  }, 300);
+    // Fully clear UI for a clean re-init next time
+    modal.querySelector('.media-container')?.replaceChildren();
+    modal.querySelector('.media-dots')?.replaceChildren();
+  }, 250);
 
   currentProject = null;
   currentMediaSlide = 0;
@@ -566,99 +561,94 @@ function stopAllModalMedia() {
   stopMediaInElement(modal);
 }
 
+// Initialize media carousel for the current project's media (call from openProjectModal)
 function initMediaCarousel(media) {
-  if (!media || media.length === 0) return;
-  
-  const container = document.querySelector('.media-container');
-  const dotsContainer = document.querySelector('.media-dots');
-  const prevBtn = document.querySelector('.media-prev');
-  const nextBtn = document.querySelector('.media-next');
-  
-  // Clear existing content
+  // Clean up any previous listeners
+  if (mediaCarouselController) { mediaCarouselController.abort(); }
+  mediaCarouselController = new AbortController();
+  const { signal } = mediaCarouselController;
+
+  // Reset slide index for a fresh project
+  currentMediaSlide = 0;
+
+  const modal = document.getElementById('projectModal');
+  const container = modal.querySelector('.media-container');
+  const dotsEl = modal.querySelector('.media-dots');
+  const prevBtn = modal.querySelector('.media-prev');
+  const nextBtn = modal.querySelector('.media-next');
+
+  // Clear previous content
   container.innerHTML = '';
-  dotsContainer.innerHTML = '';
-  
-  // Create media items
-  media.forEach((item, index) => {
+  dotsEl.innerHTML = '';
+
+  // Build slides
+  media.forEach((item, i) => {
     const mediaEl = document.createElement('div');
-    mediaEl.className = `media-item ${index === 0 ? 'active' : ''}`;
-    
+    mediaEl.className = 'media-item' + (i === 0 ? ' active' : '');
+
     let content = '';
     switch (item.type) {
-      case 'image':
-        content = `<img src="${item.src}" alt="${item.alt || item.title}" title="${item.title}">`;
-        break;
       case 'video':
         content = `<video controls preload="metadata"><source src="${item.src}" type="video/mp4"></video>`;
         break;
       case 'embed':
         content = `<iframe src="${item.src}" data-src="${item.src}" frameborder="0" allowfullscreen></iframe>`;
         break;
+      case 'image':
+      default:
+        content = `<img src="${item.src}" alt="${item.alt || ''}" />`;
+        break;
     }
-    
     mediaEl.innerHTML = content;
     container.appendChild(mediaEl);
 
-    const iframe = mediaEl.querySelector('iframe');
-    if (iframe && !iframe.dataset.src) {
-      iframe.dataset.src = iframe.getAttribute('src') || '';
-    }
-    
-    // Create dot
+    // Dot
     const dot = document.createElement('button');
-    dot.className = `media-dot ${index === 0 ? 'active' : ''}`;
-    dot.setAttribute('data-media', index);
-    dotsContainer.appendChild(dot);
+    dot.className = 'media-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to media ${i + 1}`);
+    dot.addEventListener('click', () => changeMediaSlide(i), { signal });
+    dotsEl.appendChild(dot);
   });
-  
-  // Hide navigation if only one media item
-  if (media.length <= 1) {
-    prevBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
-    dotsContainer.style.display = 'none';
-    return;
-  }
-  
-  prevBtn.style.display = 'flex';
-  nextBtn.style.display = 'flex';
-  dotsContainer.style.display = 'flex';
-  
-  // Navigation events
-  prevBtn.addEventListener('click', () => changeMediaSlide(currentMediaSlide - 1));
-  nextBtn.addEventListener('click', () => changeMediaSlide(currentMediaSlide + 1));
-  
-  // Dot events
-  dotsContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('media-dot')) {
-      const slideIndex = parseInt(e.target.dataset.media);
-      changeMediaSlide(slideIndex);
+
+  const getItems = () => Array.from(container.querySelectorAll('.media-item'));
+  const getDots = () => Array.from(dotsEl.querySelectorAll('.media-dot'));
+
+  // Slide change with proper wrap and UI sync
+  function changeMediaSlide(newIndex) {
+    const items = getItems();
+    const dots = getDots();
+    if (!items.length) return;
+
+    // Wrap
+    const len = items.length;
+    newIndex = ((newIndex % len) + len) % len;
+
+    // Stop media in the slide being left (uses earlier helper if added)
+    const prevItem = items[currentMediaSlide];
+    if (prevItem && typeof stopMediaInElement === 'function') {
+      stopMediaInElement(prevItem);
     }
-  });
-  
-  currentMediaSlide = 0;
-}
 
-function changeMediaSlide(newSlide) {
-  const mediaItems = document.querySelectorAll('.media-item');
-  const dots = document.querySelectorAll('.media-dot');
-  if (mediaItems.length === 0) return;
+    // Update classes
+    items[currentMediaSlide]?.classList.remove('active');
+    dots[currentMediaSlide]?.classList.remove('active');
+    currentMediaSlide = newIndex;
+    items[currentMediaSlide]?.classList.add('active');
+    dots[currentMediaSlide]?.classList.add('active');
+  }
 
-  // Handle wraparound
-  if (newSlide >= mediaItems.length) newSlide = 0;
-  if (newSlide < 0) newSlide = mediaItems.length - 1;
+  // Wire controls with abortable listeners
+  prevBtn?.addEventListener('click', () => changeMediaSlide(currentMediaSlide - 1), { signal });
+  nextBtn?.addEventListener('click', () => changeMediaSlide(currentMediaSlide + 1), { signal });
 
-  // Stop media in the slide we are leaving
-  const prevItem = mediaItems[currentMediaSlide];
-  if (prevItem) stopMediaInElement(prevItem);
+  // Optional: Left/Right key handling only while modal is open
+  modal.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); changeMediaSlide(currentMediaSlide - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); changeMediaSlide(currentMediaSlide + 1); }
+  }, { signal });
 
-  // Update active states
-  if (mediaItems[currentMediaSlide]) mediaItems[currentMediaSlide].classList.remove('active');
-  if (dots[currentMediaSlide]) dots[currentMediaSlide].classList.remove('active');
-
-  currentMediaSlide = newSlide;
-
-  if (mediaItems[currentMediaSlide]) mediaItems[currentMediaSlide].classList.add('active');
-  if (dots[currentMediaSlide]) dots[currentMediaSlide].classList.add('active');
+  // Expose locally if needed elsewhere
+  // window._changeMediaSlide = changeMediaSlide; // optional
 }
 
 // Navigation Functions
